@@ -8,21 +8,14 @@ dotenv.config()
 const app = express()
 const PORT = process.env.PORT || 8000
 
-const startServer = async () => {
-    try {
-        await connectMongo()
-        app.use(cors())
-        app.use(express.json())
+connectMongo()
+app.use(cors())
+app.use(express.json())
 
-        app.get('/', (req, res) => res.send('ok'))  
+app.get('/', (req, res) => res.send('ok'))  
 
-        app.use('/api/user', userRouter)
+app.use('/api/user', userRouter)
 
-        app.listen(PORT, () => console.log(`Server is running on: ${PORT}`))
-    } catch(err) {
-        console.error('Error while starting server:', err)
-        process.exit(1)
-    }
-}
+app.listen(PORT, () => console.log(`Server is running on: ${PORT}`))
 
-startServer()
+export default app
