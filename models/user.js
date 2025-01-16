@@ -1,5 +1,22 @@
 import { Schema, model } from 'mongoose'
 
+const postSchema = new Schema({
+    postId: {
+        type: String,
+        required: true
+    },
+    textPost: {
+        type: String
+    },
+    imagePost: {
+        type: String
+    },
+    postedAt: {
+        type: String,
+        required: true
+    }
+})
+
 const userSchema = new Schema({
     uid: {
         type: String,
@@ -19,7 +36,24 @@ const userSchema = new Schema({
     isProfileSet: {
         type: Boolean,
         required: true
+    },
+    username: {
+        type: String,
+        unique: true,
+        index: true
+    },
+    pfp: {
+        type: String,
+    },
+    bio: {
+        type: String
+    },
+    userType: {
+        type: String
     }
+    // posts: {
+
+    // }
 })
 
 export const userModel = model("logged_in_user", userSchema)
