@@ -33,27 +33,12 @@ const userSchema = new Schema({
         unique: true,
         index: true
     },
-    isProfileSet: {
-        type: Boolean,
-        required: true
-    },
-    username: {
-        type: String,
-        unique: true,
-        index: true
-    },
     pfp: {
         type: String,
-    },
-    bio: {
-        type: String
     },
     userType: {
         type: String
     }
-    // posts: {
-
-    // }
 })
 
 export const userModel = model("logged_in_user", userSchema)
